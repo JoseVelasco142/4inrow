@@ -1,0 +1,31 @@
+body {
+    padding: 5%;
+    padding-left: 15%;
+    background: black;
+}
+
+#menu {
+    width: 85%;
+    height: 500px;
+    border-radius: 50px;
+    border:1px solid white;
+
+}
+
+#layer1, #layer2, #layer3{
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 500px;
+    border-radius: 50px;
+    position: relative;
+}
+#layer1{
+    z-index: 1;
+}
+#layer2{
+    z-index: 2;
+}
+#layer3{
+    z-index: 3;
+}
