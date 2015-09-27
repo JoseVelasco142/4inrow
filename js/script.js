@@ -4,23 +4,52 @@
 
 $( document ).ready(function() {
 
-    function drawaaa() {
-
+    function moveToken(columna, fila, color) {
         var canvas = document.getElementById('uicanvas');
         var context = canvas.getContext('2d');
 
-//paint the text
-        var centerX = 25;
-        var centerY = 28;
-        var hradius = 28;
-        var vradius = 32;
+        var centerX = 18;
+        var centerY = 26;
+        var distancex = 36;
+        var distancey = 28;
 
-        drawEllipse(context, 7, 14, 37, 29);
+        context.save();
+        context.scale(1.4, 1.1);
+        context.beginPath();
+        context.arc(centerX + distancex * columna, centerY + distancey * fila, 13, 0, 2 * Math.PI, false);
+        context.restore();
+        context.fillStyle = color;
+        context.fill();
+        context.lineWidth = 1;
+        context.strokeStyle = color;
+        context.stroke();
+
     }
 
+    moveToken(2, 0, 'red'); 
+});
 
 
-    function drawEllipse(ctx, x, y, w, h) {
+
+
+
+
+
+
+/*
+        var canvas = document.getElementById('uicanvas');
+        var context = canvas.getContext('2d');
+        var c = color;
+
+        var centerX = 7;
+        var centerY = 14;
+        var hradius = 37;
+        var vradius = 29;
+
+        drawEllipse(context, centerX, centerY, hradius, vradius, c);
+    }
+
+    function drawEllipse(ctx, x, y, w, h, c) {
         var kappa = .5522848,
             ox = (w / 2) * kappa, // control point offset horizontal
             oy = (h / 2) * kappa, // control point offset vertical
@@ -35,18 +64,19 @@ $( document ).ready(function() {
         ctx.bezierCurveTo(xm + ox, y, xe, ym - oy, xe, ym);
         ctx.bezierCurveTo(xe, ym + oy, xm + ox, ye, xm, ye);
         ctx.bezierCurveTo(xm - ox, ye, x, ym + oy, x, ym);
-        ctx.strokeStyle = "red";
-        ctx.fillStyle = "red";
-
-
+        ctx.strokeStyle = 'c';
+        ctx.fillStyle = 'c' ;
         ctx.closePath(); // not used correctly, see comments (use to close off open path)
         ctx.stroke();
     }
 
-    drawaaa();
+    moveToken('yellow');
+*/
 
 
-});
+
+
+
 /*
 
 function canvasOver()

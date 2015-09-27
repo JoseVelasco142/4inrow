@@ -18,12 +18,30 @@ body{
 
 #menu{
     height: 500px;
-    background: darkslateblue;
+    background: darkred;
     border-radius: 40px;
     margin: 2%;
-    padding: 7%;
-
+    padding: 2%;
 }
+
+input.btn{
+    background: yellow;
+    height: 10%;;
+    margin-top: 10%;
+    width: 75%;
+    margin-left:12%;
+}
+
+.name1, .name2{
+    width: 95%;
+    margin-top: 15%;
+}
+
+#credits{
+    margin-top: 80%;
+}
+
+
 
 #selector{
     margin:0;
@@ -63,7 +81,7 @@ body{
 }
 
 .f1, .f2, .f3, .f4, .f5, .f6 {
-    height: 75px;
+    height: 74px;
     border-radius:50%;
     background: white;
     border: 1px solid black;
