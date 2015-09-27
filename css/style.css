@@ -3,9 +3,8 @@ html {
     z-index: -1;
 }
 
-
 body{
-    background-color:black;
+    background-color:white;
     overflow: hidden;
 }
 
@@ -16,39 +15,52 @@ body{
     background: transparent;
 }
 
-#menu{
-    height: 500px;
+input[type="button"]{
     background: darkred;
-    border-radius: 40px;
-    margin: 2%;
-    padding: 2%;
-}
-
-input.btn{
-    background: yellow;
-    height: 10%;;
+    height: 75px;
     margin-top: 10%;
-    width: 75%;
-    margin-left:12%;
+    width: 125px;
+    margin-left:5%;
+    border-radius: 25px;
+    color:black;
+    font-weight: bolder;
+    font-size: 1.5em;
 }
 
-.name1, .name2{
+input[type="text"]{
     width: 95%;
     margin-top: 15%;
+    margin-bottom: 15%;
+    visibility: visible;
+    height: 45px;
+}
+
+#turno{
+    height: 60px;
+    width: 60px;
+    background: yellow;
+    position:absolute;
+    border-radius: 50px;
+    padding: 8px;
+    padding-top: 20px;
+    top: 225px;
+    left: 75px;
+
 }
 
 #credits{
-    margin-top: 80%;
+
+    position: absolute;
+    top: 400px;
+    left: -140px;
+    background: white;
+    width: 80px;
+    border-radius: 50px;
+    color:black;
+    font-size: 1.2em;
+
 }
 
-
-
-#selector{
-    margin:0;
-    margin-left: 10%;
-    padding: 0;
-    float: left;
-}
 
 
 #tablero{
@@ -58,22 +70,17 @@ input.btn{
     margin-top: 3%;
     padding: 2%;
     float: left;
-    background: mediumblue ;
+    background-color: mediumblue;
+    z-index: 100;
  }
 
-
 #uicanvas {
-    border-radius: 45px;
-    margin:0;
-    margin-top: 75px;
-    margin-left: 105px;
-    padding: 2%;
-    float: left;
-    position: fixed;
-    width: 745px;
-    height: 440px;
-    z-index: 99;
-    background-color: transparent;
+    margin-top: 70px;
+    margin-left: 145px;
+    position: absolute;
+    width: 666px;
+    height: 100px;
+    z-index: 101;
 }
 
 .c1, .c2, .c3, .c4, .c5, .c6{
@@ -81,25 +88,37 @@ input.btn{
 }
 
 .f1, .f2, .f3, .f4, .f5, .f6 {
-    height: 74px;
+    height: 72px;
     border-radius:50%;
-    background: white;
+    background-color: white;
     border: 1px solid black;
     margin-top: 6px;
+    -webkit-box-shadow: -6px -5px 0px 0px rgba(50, 50, 50, 0.83);
+    -moz-box-shadow:    -6px -5px 0px 0px rgba(50, 50, 50, 0.83);
+    box-shadow:         -6px -5px 0px 0px rgba(50, 50, 50, 0.83);
+
+}
+
+#selector{
+    margin:0;
+    margin-left: 12%;
+    padding: 0;
 }
 
 .fselected{
     height: 65px;
+    width: 75px;
     border: 1px solid white;
-    border-radius:5%;
-    background: white;
+    border-radius:50%;
+    margin-left: 20px;
+    margin-right: 20px;
+    position: relative;
     margin-top: 6px;
     float: left;
 }
 
-
 .fselected:hover{
-    background: black   ;
+    background: red;
 }
 
 

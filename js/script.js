@@ -4,144 +4,105 @@
 
 $( document ).ready(function() {
 
-    function moveToken(columna, fila, color) {
+    function drawToken(c, cl) {
         var canvas = document.getElementById('uicanvas');
         var context = canvas.getContext('2d');
 
-        var centerX = 18;
-        var centerY = 26;
-        var distancex = 36;
-        var distancey = 28;
-
         context.save();
-        context.scale(1.4, 1.1);
+        context.scale(0.295, 0.795);
         context.beginPath();
-        context.arc(centerX + distancex * columna, centerY + distancey * fila, 13, 0, 2 * Math.PI, false);
+        context.lineWidth = 7;
+        context.shadowColor = 'black';
+        context.strokeStyle = "rgba(0,0,0,0.6)";
+        context.shadowBlur = 15;
+        context.shadowOffsetX = 0;
+        context.shadowOffsetY = 0;
+        context.arc(70 + (177 * c), canvas.height / 2, 60, 0, 2 * Math.PI, false);
+        context.stroke();
         context.restore();
-        context.fillStyle = color;
+        context.fillStyle = cl;
         context.fill();
-        context.lineWidth = 1;
-        context.strokeStyle = color;
+        context.strokeStyle = cl;
         context.stroke();
 
     }
 
-    moveToken(2, 0, 'red'); 
+    function moveToken(c, f, cl) {
+        drawToken(c, cl);
+
+        $("#uicanvas").animate({
+            top: 62 + ((f * 77) + (f + 2))
+        });
+    }
+
+    function demo(){
+        autodraw(0);
+        autodraw(1);
+        autodraw(2);
+        autodraw(3);
+        autodraw(4);
+    }
+
+    function autodraw(row) {
+        var c1 = 'red';
+        var c2 = 'yellow';
+        moveToken(0, row, c1);
+        moveToken(1, row, c2);
+        moveToken(2, row, c1);
+        moveToken(3, row, c2);
+        moveToken(4, row, c1);
+        moveToken(5, row, c2);
+    }
+
+    $('#iniciar').click(function() {
+        $('#player1').show();
+        $('#player2').show();
+        $('#comenzar').show();
+
+        $(this).hide();
+    });
+
+    $('#comenzar').click(function() {
+        play();
+        $('#reset').show();
+        $('#player1').hide();
+        $('#player2').hide();
+        $('#comenzar').hide();
+        $('#turno').show();
+        $(this).hide();
+    });
+
+    $('#reset').click(function() {
+        location.reload();
+    });
+
+    $('input[type=text]').focus(function(){
+                $(this).val('');
+    });
+
+    function play(){
+        console.log("y funcionaaaaaa");
+    }
+
+    function init() {
+        demo();
+        $('#player1').hide();
+        $('#player2').hide();
+        $('#comenzar').hide();
+        $('#reset').hide();
+        $('#turno').hide();
+    }
+
+    init();
 });
 
 
 
-
-
-
-
-
-/*
-        var canvas = document.getElementById('uicanvas');
-        var context = canvas.getContext('2d');
-        var c = color;
-
-        var centerX = 7;
-        var centerY = 14;
-        var hradius = 37;
-        var vradius = 29;
-
-        drawEllipse(context, centerX, centerY, hradius, vradius, c);
-    }
-
-    function drawEllipse(ctx, x, y, w, h, c) {
-        var kappa = .5522848,
-            ox = (w / 2) * kappa, // control point offset horizontal
-            oy = (h / 2) * kappa, // control point offset vertical
-            xe = x + w,           // x-end
-            ye = y + h,           // y-end
-            xm = x + w / 2,       // x-middle
-            ym = y + h / 2;       // y-middle
-
-        ctx.beginPath();
-        ctx.moveTo(x, ym);
-        ctx.bezierCurveTo(x, ym - oy, xm - ox, y, xm, y);
-        ctx.bezierCurveTo(xm + ox, y, xe, ym - oy, xe, ym);
-        ctx.bezierCurveTo(xe, ym + oy, xm + ox, ye, xm, ye);
-        ctx.bezierCurveTo(xm - ox, ye, x, ym + oy, x, ym);
-        ctx.strokeStyle = 'c';
-        ctx.fillStyle = 'c' ;
-        ctx.closePath(); // not used correctly, see comments (use to close off open path)
-        ctx.stroke();
-    }
-
-    moveToken('yellow');
-*/
-
-
-
+//////////////////////////////////////////////////////////////////////////
 
 
 /*
-
-function canvasOver()
-{
-    // Create a blank div where we are going to put the canvas into.
-    var canvasa = document.getElementById("uicanvas");
-    // Add the div into the document
-    document.body.appendChild(canvasa);
-    canvasa.style.position="absolute";
-    // Set to 100% so that it will have the dimensions of the document
-    canvasa.style.left="0px";
-    canvasa.style.top="0px";
-    canvasa.style.width="100%";
-    canvasa.style.height="100%";
-    // Set to high index so that this is always above everything else
-    // (might need to be increased if you have other element at higher index)
-    canvasa.style.zIndex="1000";
-
-    // Now we create the canvas
-    myCanvas = document.createElement('canvas');
-    myCanvas.style.width = canvasa.scrollWidth+"px";
-    myCanvas.style.height = canvasa.scrollHeight+"px";
-    // You must set this otherwise the canvas will be streethed to fit the container
-    myCanvas.width=canvasa.scrollWidth;
-    myCanvas.height=canvasa.scrollHeight;
-    myCanvas.style.overflow = 'visible';
-    myCanvas.style.position = 'absolute';
-    // Add int into the container
-    canvasa.appendChild(myCanvas);
-}
-
-canvasOver();*/
-
-/*
-
-
-    var capa1;
-    var brocha1;
-
-    capa1 = document.getElementById("capa1");
-    brocha1 = capa1.getContext('2d');
-    var radius = 11;
-
-    brocha1.beginPath();
-    brocha1.arc(11, 50, radius, 0, 2*Math.PI, false);
-    brocha1.fillStyle = 'green';
-    brocha1.fill();
-*/
-
-/*
-    var canvas = document.getElementsByTagName("canvas");
-    var red = 'rgb(255, 0, 0)';
-    var black = 'rgb(0, 0, 0)';
-    var white = 'rgb(255, 255, 255)';
-
-    function create_circle(color, radius, index){
-        radius = typeof radius !== 'undefined' ? radius : 48;
-        index = typeof  index !== 'undefined' ? index : canvas_number;
-
-        circle = canvas[index].getContext('2d');
-        circle.beginPath();
-        circle.arc(50, 50, radius, 0, 2*Math.PI, false);
-        circle.fillStyle = color;
-        circle.fill();
-    }
+   
 
     $(canvas).click(function() {
         canvas_clicked = $(this).attr('id');

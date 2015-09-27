@@ -12,7 +12,6 @@
 
         <script src="js/jquery-2.1.4.min.js" type="text/javascript"></script>
         <script src="js/bootstrap.min.js" type="text/javascript"></script>
-        <script src="js/npm.js" type="text/javascript"></script>
         <script src="js/script.js" type="text/javascript"></script>
 
     </head>
@@ -20,28 +19,33 @@
     <body>
         <div id="ui" class="col-md-10 col-xs-12">
             <div id="menu" class="col-xs-2">
-                <input type="button" class="btn btn-default" value="Iniciar partida">
-                <input type="button" class="btn btn-default" value="Comenzar">
-                <input type="button" class="btn btn-default" value="Reset">
-                <input type="text" class="name1 input-sm" value="Player1">
-                <input type="text" class="name2 input-sm" value="Player1">
+                <input type="button" class="btn" id="iniciar" value="Juega!">
+                <input type="button" class="btn" id="reset" value="Reset">
 
-                <input id="credits" type="button" class="btn btn-default" value="Creditos">
+
+                <input type="text" class="name1 input-sm" id="player1" value="Player1">
+                <input type="text" class="name2 input-sm" id="player2" value="Player2">
+                <input type="button" class="btn" id="comenzar" value="Comenzar">
             </div>
+
+            <div id="turno">Player1</div>
+
+            <input type="button" class="btn" id="credits" value="Credits">
+
             <canvas id="uicanvas"></canvas>
 
             <div id="selector" class="col-xs-8">
-                <div class="fselected col-xs-2"></div>
-                <div class="fselected col-xs-2"></div>
-                <div class="fselected col-xs-2"></div>
-                <div class="fselected col-xs-2"></div>
-                <div class="fselected col-xs-2"></div>
-                <div class="fselected col-xs-2"></div>
+                <div class="fselected"></div>
+                <div class="fselected"></div>
+                <div class="fselected"></div>
+                <div class="fselected"></div>
+                <div class="fselected"></div>
+                <div class="fselected"></div>
             </div>
 
             <div id="tablero" class="col-xs-8">
                 <div class="c1 col-xs-2">
-                    <div class="f1" style="background: red"></div>
+                    <div class="f1"></div>
                     <div class="f2"></div>
                     <div class="f3"></div>
                     <div class="f4"></div>
