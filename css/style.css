@@ -7,14 +7,13 @@ html {
 body{
     background-color:black;
     overflow: hidden;
-    z-index: -1;
 }
 
 #ui{
     margin:8%;
     margin-top: 5%;
     border-radius: 45px;
-    background: yellowgreen;
+    background: transparent;
 }
 
 #menu{
@@ -22,26 +21,49 @@ body{
     background: darkslateblue;
     border-radius: 40px;
     margin: 2%;
-    padding: 2%;
+    padding: 7%;
 
 }
 
+#selector{
+    margin:0;
+    margin-left: 10%;
+    padding: 0;
+    float: left;
+}
+
+
 #tablero{
-    border:2px solid red;
     border-radius: 45px;
-    margin-left: 5%;
+    margin:0;
+    margin-left: 10%;
     margin-top: 3%;
     padding: 2%;
-    background: blue;
-
+    float: left;
+    background: mediumblue ;
  }
+
+
+#uicanvas {
+    border-radius: 45px;
+    margin:0;
+    margin-top: 75px;
+    margin-left: 105px;
+    padding: 2%;
+    float: left;
+    position: fixed;
+    width: 745px;
+    height: 440px;
+    z-index: 99;
+    background-color: transparent;
+}
 
 .c1, .c2, .c3, .c4, .c5, .c6{
     padding: 5px;
 }
 
 .f1, .f2, .f3, .f4, .f5, .f6 {
-    height: 64px;
+    height: 75px;
     border-radius:50%;
     background: white;
     border: 1px solid black;
@@ -49,15 +71,18 @@ body{
 }
 
 .fselected{
-    height: 40px;
+    height: 65px;
     border: 1px solid white;
-    margin: 2px;
+    border-radius:5%;
+    background: white;
+    margin-top: 6px;
+    float: left;
 }
+
 
 .fselected:hover{
-    background: red;
+    background: black   ;
 }
 
-#canvasSection{
-    position:absolute;
-    z-index: 99;}
+
+

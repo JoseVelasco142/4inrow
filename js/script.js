@@ -2,50 +2,86 @@
  * Created by jose on 26/09/15.
  */
 
+$( document ).ready(function() {
 
+    function drawaaa() {
 
-function draw()
-{
+        var canvas = document.getElementById('uicanvas');
+        var context = canvas.getContext('2d');
 
 //paint the text
+        var centerX = 25;
+        var centerY = 28;
+        var hradius = 28;
+        var vradius = 32;
 
-}
+        drawEllipse(context, 7, 14, 37, 29);
+    }
 
-function createCanvasOverlay()
+
+
+    function drawEllipse(ctx, x, y, w, h) {
+        var kappa = .5522848,
+            ox = (w / 2) * kappa, // control point offset horizontal
+            oy = (h / 2) * kappa, // control point offset vertical
+            xe = x + w,           // x-end
+            ye = y + h,           // y-end
+            xm = x + w / 2,       // x-middle
+            ym = y + h / 2;       // y-middle
+
+        ctx.beginPath();
+        ctx.moveTo(x, ym);
+        ctx.bezierCurveTo(x, ym - oy, xm - ox, y, xm, y);
+        ctx.bezierCurveTo(xm + ox, y, xe, ym - oy, xe, ym);
+        ctx.bezierCurveTo(xe, ym + oy, xm + ox, ye, xm, ye);
+        ctx.bezierCurveTo(xm - ox, ye, x, ym + oy, x, ym);
+        ctx.strokeStyle = "red";
+        ctx.fillStyle = "red";
+
+
+        ctx.closePath(); // not used correctly, see comments (use to close off open path)
+        ctx.stroke();
+    }
+
+    drawaaa();
+
+
+});
+/*
+
+function canvasOver()
 {
     // Create a blank div where we are going to put the canvas into.
-    var canvasContainer = document.createElement('div');
+    var canvasa = document.getElementById("uicanvas");
     // Add the div into the document
-    document.body.appendChild(canvasContainer);
-    canvasContainer.style.position="absolute";
+    document.body.appendChild(canvasa);
+    canvasa.style.position="absolute";
     // Set to 100% so that it will have the dimensions of the document
-    canvasContainer.style.left="0px";
-    canvasContainer.style.top="0px";
-    canvasContainer.style.width="100%";
-    canvasContainer.style.height="100%";
+    canvasa.style.left="0px";
+    canvasa.style.top="0px";
+    canvasa.style.width="100%";
+    canvasa.style.height="100%";
     // Set to high index so that this is always above everything else
     // (might need to be increased if you have other element at higher index)
-    canvasContainer.style.zIndex="1000";
+    canvasa.style.zIndex="1000";
 
     // Now we create the canvas
     myCanvas = document.createElement('canvas');
-    myCanvas.style.width = canvasContainer.scrollWidth+"px";
-    myCanvas.style.height = canvasContainer.scrollHeight+"px";
+    myCanvas.style.width = canvasa.scrollWidth+"px";
+    myCanvas.style.height = canvasa.scrollHeight+"px";
     // You must set this otherwise the canvas will be streethed to fit the container
-    myCanvas.width=canvasContainer.scrollWidth;
-    myCanvas.height=canvasContainer.scrollHeight;
+    myCanvas.width=canvasa.scrollWidth;
+    myCanvas.height=canvasa.scrollHeight;
     myCanvas.style.overflow = 'visible';
     myCanvas.style.position = 'absolute';
     // Add int into the container
-    canvasContainer.appendChild(myCanvas);
+    canvasa.appendChild(myCanvas);
 }
 
-createCanvasOverlay();
-
-draw();
+canvasOver();*/
 
 /*
-$( document ).ready(function() {
+
 
     var capa1;
     var brocha1;
