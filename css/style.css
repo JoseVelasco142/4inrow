@@ -61,8 +61,6 @@ input[type="text"]{
 
 }
 
-
-
 #tablero{
     border-radius: 45px;
     margin:0;
@@ -76,9 +74,9 @@ input[type="text"]{
 
 #uicanvas {
     margin-top: 70px;
-    margin-left: 145px;
+    margin-left: 130px;
     position: absolute;
-    width: 666px;
+    width: 700px;
     height: 100px;
     z-index: 101;
 }
