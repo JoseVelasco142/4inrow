@@ -4,7 +4,6 @@ html {
 }
 
 body{
-    background-color:white;
     overflow: hidden;
 }
 
@@ -28,24 +27,49 @@ input[type="button"]{
 }
 
 input[type="text"]{
-    width: 95%;
+    width: 80%;
     margin-top: 15%;
     margin-bottom: 15%;
     visibility: visible;
     height: 45px;
 }
 
-#turno{
+
+#turn {
+    height: 40px;
+    width: 160px;
+    position: absolute;
+    border: 2px solid white;
+    border-radius: 35px;
+    color: white;
+    text-align: center;
+    font-weight: bolder;
+    font-size: 1.3em;
+    background: lightsteelblue;
+    padding: 8px;
+    top: 160px;
+    left: 30px;
+}
+.color{
     height: 60px;
     width: 60px;
-    background: yellow;
     position:absolute;
     border-radius: 50px;
+    border:2px solid white;
     padding: 8px;
     padding-top: 20px;
-    top: 225px;
-    left: 75px;
+    padding-left: 20px;
+}
 
+#pj1{
+    background: red;
+    top: 225px;
+    left: 30px;
+}
+#pj2{
+    background: yellow;
+    top: 225px;
+    left: 130px;
 }
 
 #credits{
@@ -119,5 +143,9 @@ input[type="text"]{
     background: red;
 }
 
+div.popover-content{
+    background: lightsalmon;
+    font-weight: bolder;
 
+}
 
