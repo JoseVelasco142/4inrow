@@ -1,16 +1,41 @@
 html {
     background-color: black;
-    z-index: -1;
 }
 
 body{
     overflow: hidden;
 }
 
-#ui{
-    margin:8%;
-    margin-top: 5%;
+#tablero{
+    width: 690px;
+    margin: 0;
+    background-color: #0000FF;
+    padding: 15px;
     border-radius: 45px;
+    float: left;
+    margin-left: 15%;
+    margin-top: 3%;
+
+
+
+
+}
+
+.cell {
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+    margin: 2px;
+    margin-left: 5px;
+    float: left;
+    border: 1px solid #000000;
+}
+
+.whiteCell {
+    background-color: #ffffff;
+}
+
+#menu{
     background: transparent;
 }
 
@@ -19,7 +44,7 @@ input[type="button"]{
     height: 75px;
     margin-top: 10%;
     width: 125px;
-    margin-left:5%;
+    margin-left:10%;
     border-radius: 25px;
     color:black;
     font-weight: bolder;
@@ -27,13 +52,13 @@ input[type="button"]{
 }
 
 input[type="text"]{
-    width: 80%;
+    width: 90%;
+    margin-left: 5%;
     margin-top: 15%;
     margin-bottom: 15%;
     visibility: visible;
     height: 45px;
 }
-
 
 #turn {
     height: 40px;
@@ -48,8 +73,8 @@ input[type="text"]{
     background: lightsteelblue;
     padding: 8px;
     top: 160px;
-    left: 30px;
 }
+
 .color{
     height: 60px;
     width: 60px;
@@ -64,12 +89,12 @@ input[type="text"]{
 #pj1{
     background: red;
     top: 225px;
-    left: 30px;
 }
+
 #pj2{
     background: yellow;
     top: 225px;
-    left: 130px;
+    left: 100px;
 }
 
 #credits{
@@ -85,25 +110,32 @@ input[type="text"]{
 
 }
 
-#tablero{
+div.popover-content{
+    background: lightsalmon;
+    font-weight: bolder;
+
+}
+
+#ui{
+    margin:8%;
+    margin-top: 5%;
     border-radius: 45px;
-    margin:0;
-    margin-left: 10%;
-    margin-top: 3%;
-    padding: 2%;
-    float: left;
-    background-color: mediumblue;
-    z-index: 100;
- }
+    background: transparent;
+}
 
 #uicanvas {
-    margin-top: 70px;
-    margin-left: 130px;
-    position: absolute;
+    top:-50px;
+    left: 360px;
+    position:absolute;
     width: 700px;
-    height: 100px;
+    height: 85px;
     z-index: 101;
 }
+
+
+/*
+
+
 
 .cl{
     padding: 5px;
@@ -143,9 +175,6 @@ input[type="text"]{
     background: red;
 }
 
-div.popover-content{
-    background: lightsalmon;
-    font-weight: bolder;
 
-}
 
+*/
