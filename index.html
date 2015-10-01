@@ -7,10 +7,14 @@
         <link rel="stylesheet" type="text/css" href="css/style.css">
         <link rel="stylesheet" type="text/css" href="css/bootstrap-theme.min.css">
         <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
-        <link rel="stylesheet" type="text/css" href="css/bootstrap.css.map">
+        <link rel="stylesheet" type="text/css" href="css/alertify.core.css" />
+        <link rel="stylesheet" type="text/css" href="css/alertify.default.css" />
+
         <script src="js/jquery-2.1.4.min.js" type="text/javascript"></script>
         <script src="js/bootstrap.min.js" type="text/javascript"></script>
+        <script src="js/alertify.min.js"></script>
         <script src="js/script.js" type="text/javascript"></script>
+
     </head>
     <body>
         <div id="ui" class="col-md-10 col-xs-12">
@@ -18,12 +22,9 @@
             <div id="menu" class="col-xs-2">
                 <input type="button" class="btn" id="iniciar" value="Juega!">
                 <input type="button" class="btn" id="reset" value="Reset">
-                <input type="text" class="name1 input-sm" id="player1" value="Player1">
-                <input type="text" class="name2 input-sm" id="player2" value="Player2">
-                <input type="button" class="btn" id="comenzar" value="Comenzar">
                 <span id="turn">TURNO</span>
-                <div class="color" id="pj1">P1</div>
-                <div class="color" id="pj2">P2</div>
+                <div class="color" id="pj1"></div>
+                <div class="color" id="pj2"></div>
             </div>
 
             <input type="button" class="btn btn-info" id="credits" value="Credits" data-toggle="popover"

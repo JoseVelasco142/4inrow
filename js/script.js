@@ -6,14 +6,123 @@ $( document ).ready(function() {
 
     // Dibujo tablero
     var tablero =  $("#tablero");
+    var color='red';
+    var turno = true;
+    var Player1 = $('#pj1');
+    var Player2 = $('#pj2');
+
     for(i = 0; i < 6; i++)
         for(j = 0; j < 8; j++)
-            tablero.append('<div id="cell-'+ j + '-' + i+'" class="cell whiteCell">'+'</div>' );
+            tablero.append('<div id="cell-'+ j + '-' + i+'" class="cell">'+'</div>' );
 
     tablero.append('<div style="clear:both"></div>');
 
 
-    var color='darkred';
+    // Funcion de inicio
+    function init() {
+        //Oculto botones
+        $('#comenzar , #reset , #pj1, #pj2, #turn').hide();
+        $(' #iniciar').css('visibility','hidden');
+        // Lanzo la demo
+        demo();
+        //Espero a que se complete para mostrar el boton de inicio
+        setTimeout(function(){
+            $(' #iniciar').css('visibility','visible');
+            $('#tablero').css('visibility','hidden');
+        }, 3000);
+
+    }
+
+    //Demo intro
+    function demo(){
+        drawToken(0,'yellow');
+        drawToken(1,'red');
+        drawToken(2,'green');
+        drawToken(3,'darkblue');
+        drawToken(4,'purple');
+        drawToken(5,'lightblue');
+        drawToken(6,'grey');
+        drawToken(7,'darkgreen');
+        moveToken(5);
+
+    }
+
+
+    // Resetear juego
+    $('#reset').click(function() {
+        location.reload();
+    });
+
+    //Popover Bootstrap
+    $(function () {
+        $('[data-toggle="popover"]').popover({
+            html : true
+        })
+    });
+
+    // Clik en boton iniciar
+    $('#iniciar').click(function iniciarJuego() {
+
+        // Muestro los input que recogeran los nombres de usuario
+        $(this).hide();
+        $('#tablero').css('visibility','visible');
+        $('#reset').show();
+        $('#turn').show();
+        $('#pj1').show();
+        $('#pj2').show();
+        turnPlayers()
+    });
+
+    //Turno de jugadores
+    function turnPlayers(){
+
+        if(turno){
+            Player1.show();
+            Player2.hide();
+            color = 'red';
+            turno=false;
+        }else{
+            Player1.hide();
+            Player2.show();
+            color = 'yellow';
+            turno=true;
+        }
+    }
+
+    //Jugada
+    $(".cell").click(function pintar(){
+
+        coordinates = $(this).attr("id").split('-');
+        if (!checkState(coordinates[1], coordinates[2])) {
+            alertify.error("Debes de ponerla encima de otra o empezar por abajo");
+        } else if ($(this).css('backgroundColor') != 'rgb(255, 255, 255)') {
+            alertify.error("No puedes poner dos fichas en el mismo sitio");
+        } else {
+            drawToken(coordinates[1], color);
+            moveToken(coordinates[2]);
+            setTimeout(function () {
+                paintPosition(coordinates[1], coordinates[2], color);
+                if (checkHorizontalWin(coordinates) || checkVerticallWin(coordinates) || checkDiagonalWin(coordinates)) {
+                    $('.cell').unbind("click");
+                    alertify.alert("El jugador de color " + color + " ha ganado");
+                    alertify.success("Pulsa el boton RESET para jugar de nuevo");
+                }
+                turnPlayers();
+            }, 3000);
+        }
+    });
+
+    //Compruebo si la siguiente celda tiene y ficha o es la ultima
+    function checkState(col,row){
+        row++;
+        nextSelected = $('#cell-'+col+'-'+(row));
+
+        if(row == 6){
+            return true
+        }else{
+            return nextSelected.css('backgroundColor') != 'rgb(255, 255, 255)';
+        }
+    }
 
     // Dibuja ficha
     function drawToken(c, color) {
@@ -63,155 +172,53 @@ $( document ).ready(function() {
         coordinateSelected.css('backgroundColor',color);
     }
 
-    //Jugada
-    $(".cell").click(function pintar(){
-        coordinates = $(this).attr("id").split('-');
-        var lastOfColum = ("('#cell-"+coordinates[1]+"-5')");
-        if ($(this).css('backgroundColor') != 'rgb(255, 255, 255)') {
-            alert('ahi ya hay una ficha ');
-        } else {
-            //$('.cell').unbind();
-            drawToken(coordinates[1], color);
-            moveToken(coordinates[2]);
-            setTimeout(function () {
-                paintPosition(coordinates[1], coordinates[2], color);
-            }, 3000)
+    // Comprueba victoria horizontal
+    function checkHorizontalWin(coordinates){
+        lastMoveColor = $('#cell-'+coordinates[1]+'-'+coordinates[2]).css('backgroundColor');
+        hcounter = 0;
+        for(i=0; i<=7; i++) {
+            var currentCell = $('#cell-' + i + '-' + coordinates[2]);
+            if (currentCell.css('backgroundColor') == lastMoveColor) {
+                hcounter++;
+            } else if (currentCell.css('backgroundColor') != 'rgb(255, 255, 255)') {
+                hcounter = 0;
+            }
+            if (hcounter == 4) return true;
         }
-    });
-
-    // Resetear juego
-    $('#reset').click(function() {
-        location.reload();
-    });
-
-    // Limpiar cajas
-    $('input[type=text]').focus(function cleanAutoText(){
-        $(this).val('');
-    });
-
-    // Funcion de inicio
-    function init() {
-        //Oculto casi todos los botones
-        $('#player1 , #player2 , #comenzar , #reset , #pj1, #pj2, #turn').hide();
-        $(' #iniciar').css('visibility','hidden');
-        $('.fselected').css('visibility','hidden');
-
-        // Lanzo la demo
-        demo();
-        //Espero a que se complete para mostrar el boton de inicio
-        setTimeout(function(){
-            $(' #iniciar').css('visibility','visible');
-        }, 3000);
-
     }
 
-    // Clik en boton iniciar
-    $('#iniciar').click(function iniciarJuego() {
-        // Muestro los input que recogeran los nombres de usuario
-        $('#player1').show();
-        $('#player2').show();
-        $('#comenzar').show();
-        $(this).hide();
-    });
-
-    //Inicia la partida
-    $('#comenzar').click(function IniciarPartida() {
-        //Declaro usuario
-        var pj1 = $('#player1');
-        var pj2 = $('#player2');
-
-        //Recojo nombres
-        var nPj1 = pj1.val();
-        var nPj2 = pj2.val();
-
-        //Preparo la interfaz
-        $('#reset').show();
-        pj1.hide(); pj2.hide();
-        $('#turn').show();
-        $('#comenzar').hide();
-        $(this).hide();
-    });
-
-    //Popover Bootstrap
-    $(function () {
-        $('[data-toggle="popover"]').popover({
-            html : true
-        })
-    });
-
-    //Demo intro
-    function demo(){
-        drawToken(0,'yellow');
-        drawToken(1,'red');
-        drawToken(2,'green');
-        drawToken(3,'darkblue');
-        drawToken(4,'lightred');
-        drawToken(5,'lightblue');
-        drawToken(6,'grey');
-        drawToken(7,'darkgreen');
-        moveToken(5);
-
+    // Comprueba victoria vertical
+    function checkVerticallWin(coordinates){
+        lastMoveColor = $('#cell-'+coordinates[1]+'-'+coordinates[2]).css('backgroundColor');
+        vcounter = 0;
+        for(i=0; i<=5; i++) {
+            var currentCell = $('#cell-'+ coordinates[1] + '-' + i);
+            if (currentCell.css('backgroundColor') == lastMoveColor) {
+                vcounter++;
+            } else if (currentCell.css('backgroundColor') != 'rgb(255, 255, 255)') {
+                vcounter = 0;
+            }
+            if (vcounter == 4) return true;
+        }
     }
 
+    function checkDiagonalWin(coordinates){
+        /*lastMoveColor = $('#cell-'+coordinates[1]+'-'+coordinates[2]).css('backgroundColor');
+        dcounter = 0;
+        for(j=0; j<=7; j++) {
+            for (i = 0; i <= 7; i++) {
+                var currentCell = $('#cell-' + j + '-' + i);
+                console.log(currentCell);
+                if (currentCell.css('backgroundColor') == lastMoveColor) {
+                    dcounter++;
+                } else if (currentCell.css('backgroundColor') != 'rgb(255, 255, 255)') {
+                    dcounter = 0;
+                }
+                if (dcounter == 4) return true;
+            }
+        }*/
+    }
+    //Llamada al inicio de la aplicación
     init();
 
 });
-
-
-
-/*
-
-    //dibuja la ficha en la columna seleccionada hasta la primera fila libre y la dibuja
-    $('.fselected').click(function() {
-        var columna = this.getAttribute('id');
-        var rowClean = checkState(columna);
-
-        if (rowClean >= 0) {
-            $('.fselected').css('visibility', 'hidden');
-            drawToken(columna, color);
-            moveToken(rowClean);
-            setTimeout(function () {
-                paintPosition(columna, rowClean, color);
-                $('.fselected').css('visibility', 'visible');
-            }, 5000);
-        }
-        else {
-            alert('columna llena');
-        }
-    });
-
-    //Comprueba el primer hueco vacio de la columna seleccionada
-    function checkState(columna){
-        var test = false;
-        var row = 4;
-
-        while(!test){
-            var fselected = $('#c'+columna+row);
-
-            if (fselected.css('backgroundColor') == 'rgb(255, 255, 255)') {
-                test = true;
-                return row;
-            }
-            else {
-                if(row != 0) {
-                    row = row - 1;
-                }
-                else{
-                    test = true;
-                    return -1
-                }
-            }
-        }
-    }
-
-   function turnPlayers(Npj1, Npj2){
-        //Recojo variables de jugadores
-        var PJ1 = [Npj1,'red'];
-        var PJ2 = [Npj2,'yellow'];
-        //
-        $('#pj1,#pj2').show();
-        $('.fselected').css('visibility', 'visible');
-        // AQUI DEBERIA DE CONTINUAR EL CODIGO, EL TURNO DE JUGADORES, CUANDO SE GANA O PIERDE.....
-
-    }
-*/

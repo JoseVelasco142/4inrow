@@ -1,3 +1,33 @@
+commit 72df0f5cfb51ca8bb55cee5731f8cd1155f4aede
+Author: Jose Velasco <root@Jose-LPC>
+Date:   Wed Sep 30 01:27:12 2015 +0200
+
+    90% done
+
+commit 29b3b79c8f4f1a01b696c567ab7511d49c000ac9
+Author: Jose Velasco <root@Jose-LPC>
+Date:   Tue Sep 29 00:20:47 2015 +0200
+
+    estable before day D
+
+commit 09191df7753e462fd195fa6f50b8ffc851568774
+Author: Jose Velasco <root@Jose-LPC>
+Date:   Mon Sep 28 20:46:24 2015 +0200
+
+    pintar + mover ficha coordinado
+
+commit 5fc382d4ebf6356b4aa68cff8c25c42adc852094
+Author: Jose Velasco <root@Jose-LPC>
+Date:   Mon Sep 28 01:37:14 2015 +0200
+
+    funciones++
+
+commit 006c2353165b2f465ffbe30b4aea6723eb49d9b0
+Author: Jose Velasco <root@Jose-LPC>
+Date:   Sun Sep 27 22:10:35 2015 +0200
+
+    desplazamiento, demo, interfaz
+
 commit 7eb2112f1547d15b380dc13ed6816536a534af2a
 Author: Jose Velasco <root@Jose-LPC>
 Date:   Sun Sep 27 06:56:04 2015 +0200

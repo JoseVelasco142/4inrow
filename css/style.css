@@ -15,10 +15,6 @@ body{
     float: left;
     margin-left: 15%;
     margin-top: 3%;
-
-
-
-
 }
 
 .cell {
@@ -29,9 +25,6 @@ body{
     margin-left: 5px;
     float: left;
     border: 1px solid #000000;
-}
-
-.whiteCell {
     background-color: #ffffff;
 }
 
@@ -49,6 +42,14 @@ input[type="button"]{
     color:black;
     font-weight: bolder;
     font-size: 1.5em;
+}
+#iniciar{
+    width: 320px;
+    height: 200px;
+    top: 80px;
+    left: 375px;
+    position: absolute;
+;
 }
 
 input[type="text"]{
@@ -80,10 +81,10 @@ input[type="text"]{
     width: 60px;
     position:absolute;
     border-radius: 50px;
-    border:2px solid white;
     padding: 8px;
     padding-top: 20px;
     padding-left: 20px;
+    border:5px solid white;
 }
 
 #pj1{
@@ -131,50 +132,3 @@ div.popover-content{
     height: 85px;
     z-index: 101;
 }
-
-
-/*
-
-
-
-.cl{
-    padding: 5px;
-}
-
-.c0, .c1, .c2, .c3, .c4, .c5{
-    height: 72px;
-    border-radius:50%;
-    background-color: white;
-    border: 1px solid black;
-    margin-top: 6px;
-    -webkit-box-shadow: -6px -5px 0px 0px rgba(50, 50, 50, 0.83);
-    -moz-box-shadow:    -6px -5px 0px 0px rgba(50, 50, 50, 0.83);
-    box-shadow:         -6px -5px 0px 0px rgba(50, 50, 50, 0.83);
-
-}
-
-#selector{
-    margin:0;
-    margin-left: 12%;
-    padding: 0;
-}
-
-.fselected{
-    height: 65px;
-    width: 75px;
-    border: 1px solid white;
-    border-radius:50%;
-    margin-left: 20px;
-    margin-right: 20px;
-    position: relative;
-    margin-top: 6px;
-    float: left;
-}
-
-.fselected:hover{
-    background: red;
-}
-
-
-
-*/
