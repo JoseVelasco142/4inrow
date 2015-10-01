@@ -1,3 +1,9 @@
+commit 7b3fb87049923db1a5f5be831314341c3f688129
+Author: Jose Velasco <root@Jose-LPC>
+Date:   Thu Oct 1 08:36:07 2015 +0200
+
+    checkWin vertical, diagonal
+
 commit 72df0f5cfb51ca8bb55cee5731f8cd1155f4aede
 Author: Jose Velasco <root@Jose-LPC>
 Date:   Wed Sep 30 01:27:12 2015 +0200
